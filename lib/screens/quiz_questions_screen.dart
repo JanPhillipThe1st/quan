@@ -22,7 +22,7 @@ class _QuizQuestionsScreenState extends State<QuizQuestionsScreen> {
         title: Text(widget.quizTitle),
         backgroundColor: const Color(0xFFF0F0F3),
         elevation: 0,
-        iconTheme: const IconThemeData(color: Color(0xFF8A496B)),
+        iconTheme: const IconThemeData(color: Colors.green),
         titleTextStyle: Theme.of(
           context,
         ).textTheme.titleLarge?.copyWith(color: Colors.black87),
@@ -63,7 +63,7 @@ class _QuizQuestionsScreenState extends State<QuizQuestionsScreen> {
         },
         icon: const Icon(Icons.add),
         label: const Text('Add Question'),
-        backgroundColor: const Color(0xFF8A496B),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
     );
   }

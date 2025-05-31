@@ -44,22 +44,21 @@ class QuestionProvider extends ChangeNotifier {
     _errorMessage = null;
     // notifyListeners(); // Optional: notify for 'adding' state if UI needs it
 
-    final userId = _supabase.auth.currentUser?.id;
-    if (userId == null) {
-      _errorMessage = "User not authenticated. Cannot add question.";
-      _isLoading = false;
-      notifyListeners(); // Notify UI about the error
-      throw Exception('User must be authenticated to add a question.');
-    }
+    // final userId = _supabase.auth.currentUser?.id;
+    // if (userId == null) {
+    //   _errorMessage = "User not authenticated. Cannot add question.";
+    //   _isLoading = false;
+    //   notifyListeners(); // Notify UI about the error
+    //   throw Exception('User must be authenticated to add a question.');
+    // }
 
     try {
       final newQuestionData = {
-        'quiz_id': quizId,
+        'id': quizId,
         'text': text,
         'options':
             options, // Ensure your Supabase column can handle List<String> (e.g., text[], jsonb)
-        'correct_option_index': correctOptionIndex,
-        'user_id': userId, // Assuming 'questions' table has a 'user_id' column
+        'correct_answer_index': correctOptionIndex,
       };
 
       final response = await _supabase
@@ -98,7 +97,7 @@ class QuestionProvider extends ChangeNotifier {
       final updateData = {
         'text': text,
         'options': options,
-        'correct_option_index': correctOptionIndex,
+        'correct_answer_index': correctOptionIndex,
         // 'updated_at' can be handled by Supabase triggers
       };
 

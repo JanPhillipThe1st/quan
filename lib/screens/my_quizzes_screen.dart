@@ -15,12 +15,6 @@ class MyQuizzesScreen extends StatefulWidget {
 
 class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
   static const Color backgroundColor = Color.fromARGB(255, 255, 255, 255);
-  static const Color shadowLight = Colors.white;
-  static const Color shadowDark = Color(
-    0xFFBEBEBE,
-  ); // Slightly softer dark shadow
-  static const Color iconColor = Color.fromARGB(255, 10, 208, 0);
-
   @override
   void initState() {
     super.initState();
@@ -49,7 +43,7 @@ class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
         backgroundColor: const Color(0xFFF0F0F3), // Match dashboard theme
         elevation: 0,
         iconTheme: const IconThemeData(
-          color: Color(0xFF8A496B),
+          color: Colors.green,
         ), // Match dashboard icon theme
         titleTextStyle: Theme.of(
           context,

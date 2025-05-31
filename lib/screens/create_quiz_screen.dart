@@ -108,7 +108,7 @@ class _CreateQuizScreenState extends State<CreateQuizScreen> {
                 onPressed: _isSaving ? null : _saveQuiz,
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
-                  backgroundColor: Colors.black87,
+                  backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                 ),
               ),
