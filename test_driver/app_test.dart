@@ -40,22 +40,36 @@ void main() {
       await takeScreenshot(driver!, '01_home_screen');
     });
 
-    test('Navigate to Login and take screenshot', () async {
+    test('Navigate to Scan MCQ Papers Screen and take screenshot', () async {
       // Example: Find a button by tooltip or key and tap it
-      // final SerializableFinder loginButton = find.byTooltip('Navigate to Login');
-      // await driver.tap(loginButton);
+      final SerializableFinder loginButton = find.text('Scan MCQ Papers');
+      await driver!.tap(loginButton);
 
       // Wait for the login screen to be visible
-      // await driver.waitFor(find.byValueKey('loginScreenReady'));
+      await driver!.waitFor(find.byValueKey('cameraSnackbar'));
 
-      await takeScreenshot(driver!, '02_login_screen');
+      await takeScreenshot(driver!, '02_scanning_screen');
       // Add more navigation and screenshot steps here
     });
+    test('Navigate to Quizzes Screen and take screenshot', () async {
+      // Example: Find a button by tooltip or key and tap it
+      // Emulate back button press to return to the dashboard
+      await driver!.tap(find.byTooltip('Back'));
+      await driver!.waitFor(find.text('Teacher Dashboard'));
+      ;
+      final SerializableFinder loginButton = find.text('My Quizzes');
+      await driver!.tap(loginButton);
 
-    // Add more tests for other screens
-    // test('Navigate to Profile Screen and take screenshot', () async {
-    //   // ... navigation logic ...
-    //   await takeScreenshot(driver, '03_profile_screen');
-    // });
+      // Wait for the login screen to be visible
+      await driver!.waitFor(find.byValueKey('quizzesConsumer'));
+
+      await takeScreenshot(driver!, '03_quizzes_screen');
+
+      final SerializableFinder createQuizButton = find.text('New Quiz');
+      await driver!.tap(createQuizButton);
+
+      await takeScreenshot(driver!, '04_my_quizzes_screen');
+      // Add more navigation and screenshot steps here
+    });
   });
 }

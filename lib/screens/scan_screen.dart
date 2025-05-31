@@ -134,6 +134,7 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver {
       body: Center(
         child: _isCameraInitialized
             ? AspectRatio(
+                key: Key("cameraSnackbar"),
                 aspectRatio: _controller!.value.aspectRatio,
                 child: CameraPreview(_controller!),
               )

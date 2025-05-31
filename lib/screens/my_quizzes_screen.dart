@@ -50,6 +50,7 @@ class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
       ),
       backgroundColor: const Color(0xFFF0F0F3),
       body: Consumer<QuizProvider>(
+        key: const Key('quizzesConsumer'),
         builder: (context, provider, child) {
           if (provider.isLoading) {
             return const Center(child: CircularProgressIndicator());
