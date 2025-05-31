@@ -84,7 +84,15 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 178, 0),
         elevation: 0,
-        title: Text('Teacher Dashboard', style: TextStyle(color: Colors.white)),
+        title: Column(
+          children: [
+            Text('QuAn', style: TextStyle(color: Colors.white)),
+            Text(
+              'by Jan Phillip',
+              style: TextStyle(color: Colors.white, fontSize: 10),
+            ),
+          ],
+        ),
         centerTitle: true,
         actions: [
           IconButton(

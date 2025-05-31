@@ -14,6 +14,13 @@ class MyQuizzesScreen extends StatefulWidget {
 }
 
 class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
+  static const Color backgroundColor = Color.fromARGB(255, 255, 255, 255);
+  static const Color shadowLight = Colors.white;
+  static const Color shadowDark = Color(
+    0xFFBEBEBE,
+  ); // Slightly softer dark shadow
+  static const Color iconColor = Color.fromARGB(255, 10, 208, 0);
+
   @override
   void initState() {
     super.initState();
@@ -83,8 +90,16 @@ class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
             itemCount: provider.quizzes.length,
             itemBuilder: (context, index) {
               final quiz = provider.quizzes[index];
-              return Card(
+              return Container(
                 margin: const EdgeInsets.symmetric(vertical: 8.0),
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(color: Colors.green, width: 1),
+                  boxShadow: [
+                    BoxShadow(offset: Offset(0, 4), color: Colors.green),
+                  ],
+                ),
                 child: ListTile(
                   title: Text(
                     quiz.title,
