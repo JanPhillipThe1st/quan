@@ -189,12 +189,18 @@ class DashboardScreen extends StatelessWidget {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for Supabase init
-
-  await Supabase.initialize(
-    url: 'https://urzntxniabiujldwgxuo.supabase.co',
-    anonKey:
+  // In main.dart, before Supabase.initialize
+  const supabaseUrl = String.fromEnvironment(
+    'SUPABASE_URL',
+    defaultValue: 'https://urzntxniabiujldwgxuo.supabase.co',
+  );
+  const supabaseAnonKey = String.fromEnvironment(
+    'SUPABASE_ANON_KEY',
+    defaultValue:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyem50eG5pYWJpdWpsZHdneHVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3NTgxOTcsImV4cCI6MjA2MzMzNDE5N30.U3Lo2-KADyYLFct32q-P_LoHAdWMH2UpqMltCXUfvZ4',
   );
+
+  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
 
   runApp(const AppWithProviders()); // Run the app with providers
 }

@@ -1,0 +1,62 @@
+# .github/workflows/main.yml
+name: Flutter CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ main ] # Triggers on push to the main branch
+  pull_request:
+    branches: [ main ] # Triggers on pull requests targeting the main branch
+
+jobs:
+  build_and_test:
+    name: Build & Test
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0' # Specify your project's Flutter version
+          channel: 'stable'
+          cache: true # Enable caching for faster builds
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 4. Analyze project
+      - name: Analyze project
+        run: flutter analyze
+
+      # 5. Run tests
+      - name: Run tests
+        run: flutter test
+
+      # 6. Build APK (Android) - Example
+      #    You'll need to set up signing for a release build.
+      #    For now, this demonstrates a debug build or a release build without signing.
+      - name: Build APK
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          flutter build apk --release \
+            --dart-define=SUPABASE_URL=$SUPABASE_URL \
+            --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: QuAn
+          path: build/app/outputs/flutter-apk/app-release.apk
+          # For release: build/app/outputs/flutter-apk/app-release.apk
+
+      # Add steps for iOS build if needed (more complex due to signing)
+      # - name: Build IPA (iOS)
+      #   run: flutter build ipa --release # Requires macOS runner and code signing
