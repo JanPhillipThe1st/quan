@@ -54,9 +54,8 @@ void main() {
     test('Navigate to Quizzes Screen and take screenshot', () async {
       // Example: Find a button by tooltip or key and tap it
       // Emulate back button press to return to the dashboard
-      await driver!.tap(find.byTooltip('Back'));
-      await driver!.waitFor(find.text('Teacher Dashboard'));
-      ;
+      await driver!.tap(find.pageBack());
+      await driver!.waitFor(find.text('QuAn'));
       final SerializableFinder loginButton = find.text('My Quizzes');
       await driver!.tap(loginButton);
 
@@ -69,7 +68,23 @@ void main() {
       await driver!.tap(createQuizButton);
 
       await takeScreenshot(driver!, '04_my_quizzes_screen');
-      // Add more navigation and screenshot steps here
+
+      await driver!.tap(find.pageBack());
+      await driver!.waitFor(find.text('My Quizzes'));
+      await driver!.tap(find.text('What is your name?'));
+      await Future.delayed(const Duration(seconds: 2));
+      await takeScreenshot(driver!, '05_manage_questions_screen');
+
+      await driver!.tap(find.pageBack());
+      await driver!.tap(find.pageBack());
+      await driver!.waitFor(find.text('QuAn'));
+      await driver!.tap(find.text('Auto Quiz Mode'));
+      await takeScreenshot(driver!, '06_auto_quiz_screen');
+
+      await driver!.tap(find.pageBack());
+      await driver!.waitFor(find.text('QuAn'));
+      await driver!.tap(find.text('Results & Analytics'));
+      await takeScreenshot(driver!, '07_results_screen');
     });
   });
 }
