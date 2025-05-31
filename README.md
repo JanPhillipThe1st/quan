@@ -4,8 +4,8 @@
 
 ## Getting Started
 
-This project helps teachers create a stable environment for managing classwork.
+### This project helps teachers create a stable environment for managing classwork.
 
-#Screenshots
+# Screenshots
 
 ![Home screen](screenshots/01_home_screen.png)
