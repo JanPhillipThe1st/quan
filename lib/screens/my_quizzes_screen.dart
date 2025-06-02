@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:quan/screens/manage_quiz_questions.dart';
 import '../models/quiz_model.dart';
 import '../providers/quiz_provider.dart';
-import 'quiz_questions_screen.dart'; // Import the new screen
 import 'create_quiz_screen.dart'; // Import the CreateQuizScreen
 
 class MyQuizzesScreen extends StatefulWidget {
@@ -117,16 +116,32 @@ class _MyQuizzesScreenState extends State<MyQuizzesScreen> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _navigateToCreateQuizScreen,
-        icon: const Icon(Icons.add, color: Colors.black87),
-        label: const Text('New Quiz', style: TextStyle(color: Colors.black87)),
-        backgroundColor: const Color.fromARGB(
-          255,
-          255,
-          255,
-          255,
-        ), // Match icon color
+      floatingActionButton: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Colors.green, width: 1),
+          boxShadow: [BoxShadow(offset: Offset(0, 4), color: Colors.green)],
+        ),
+        child: FloatingActionButton.extended(
+          onPressed: _navigateToCreateQuizScreen,
+          icon: const Icon(Icons.add, color: Colors.black87),
+          label: const Text(
+            'New Quiz',
+            style: TextStyle(color: Colors.black87),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+            side: BorderSide(color: Colors.green, width: 1),
+          ),
+          backgroundColor: const Color.fromARGB(
+            255,
+            255,
+            255,
+            255,
+          ), // Match icon color
+        ),
       ),
     );
   }
