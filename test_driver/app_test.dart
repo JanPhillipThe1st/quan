@@ -46,9 +46,10 @@ void main() {
       await driver!.tap(loginButton);
 
       // Wait for the login screen to be visible
-      await driver!.waitFor(find.byValueKey('cameraSnackbar'));
-
+      await driver!.waitFor(find.byValueKey('Jan Phillip Juntado 2'));
       await takeScreenshot(driver!, '02_scanning_screen');
+      await driver!.waitFor(find.byValueKey('02_1_example_result'));
+      await takeScreenshot(driver!, '02_1_example_result');
       // Add more navigation and screenshot steps here
     });
     test('Navigate to Quizzes Screen and take screenshot', () async {
