@@ -8,4 +8,4 @@
 
 # Screenshots
 
-![Home screen](screenshots/01_home_screen.png)
+![Home screen](screenshots/)
